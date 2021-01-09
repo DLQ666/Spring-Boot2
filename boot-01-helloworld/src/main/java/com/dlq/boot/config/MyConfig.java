@@ -1,9 +1,17 @@
 package com.dlq.boot.config;
 
+import ch.qos.logback.core.db.DBHelper;
+import com.dlq.boot.bean.Car;
 import com.dlq.boot.bean.Pet;
 import com.dlq.boot.bean.User;
+import com.sun.org.apache.bcel.internal.util.ClassPath;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  *@program: SpringBoot2
@@ -18,13 +26,19 @@ import org.springframework.context.annotation.Configuration;
  *      Lite(proxyBeanMethods = false)【每个@Bean方法被调用多少次返回的组件都是新创建的】
  *      组件依赖必须使用Full模式默认。其他默认是否Lite模式
  */
+@Import({User.class, DBHelper.class})
 @Configuration(proxyBeanMethods = false) //告诉SpringBoot这是一个配置类 == 配置文件beans.xml
+//@ConditionalOnBean(name = "tom")
+@ConditionalOnMissingBean(name = "tom")
+@ImportResource("classpath:beans.xml")
+@EnableConfigurationProperties(Car.class)
 public class MyConfig {
 
     /**
      * Full:外部无论对配置类中的这个组件注册方法调用多少次获取的都是之前注册容器中的单实例对象
      * @return
      */
+    @SuppressWarnings("SpringConfigurationProxyMethods")
     @Bean//@Bean：给容器中添加组件。以方法名为组件的id。返回值类型就是组件的类型。返回的值就是组件在容器中的实例
     public User user01(){
         User zhangsan = new User("zhangsan", 18);
@@ -33,7 +47,7 @@ public class MyConfig {
         return zhangsan;
     }
 
-    @Bean("tom")
+    @Bean("tom22")
     public Pet tomcatPet(){
         return new Pet("tomcat666");
     }

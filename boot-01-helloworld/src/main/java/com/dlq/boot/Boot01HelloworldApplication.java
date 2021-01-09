@@ -1,5 +1,6 @@
 package com.dlq.boot;
 
+import ch.qos.logback.core.db.DBHelper;
 import com.dlq.boot.bean.Pet;
 import com.dlq.boot.bean.User;
 import com.dlq.boot.config.MyConfig;
@@ -30,7 +31,7 @@ public class Boot01HelloworldApplication {
             System.out.println(beanDefinitionName);
         }
 
-        //3、从容器中获取组件
+        /*//3、从容器中获取组件
         Pet tom01 = run.getBean("tom", Pet.class);
         Pet tom02 = run.getBean("tom", Pet.class);
 
@@ -50,5 +51,28 @@ public class Boot01HelloworldApplication {
         Pet tom = run.getBean("tom", Pet.class);
         System.out.println("用户的宠物："+(user01.getPet() == tom));
 
+        System.out.println("--------------------------------------");
+
+        String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        for (String s : beanNamesForType) {
+            System.out.println(s);
+        }
+        DBHelper bean1 = run.getBean(DBHelper.class);
+        System.out.println(bean1);*/
+
+        boolean tom = run.containsBean("tom");
+        System.out.println("容器中Tom组件："+tom);
+
+        boolean user01 = run.containsBean("user01");
+        System.out.println("容器中user01组件："+user01);
+
+        boolean tom22 = run.containsBean("tom22");
+        System.out.println("容器中tom22组件："+tom22);
+
+        boolean hahaha = run.containsBean("hahaha");
+        System.out.println("容器中hahaha组件："+hahaha);
+
+        boolean hehehe = run.containsBean("hehehe");
+        System.out.println("容器中hehehe组件："+hehehe);
     }
 }
