@@ -1,0 +1,5 @@
+spring:
+#  mvc:
+#    static-path-pattern: /res/**  #这个会导致 Favicon 功能失效
+  resources:
+    static-locations: [classpath:/haha/]

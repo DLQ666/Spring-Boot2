@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#delete").click(function () {
+                $.post({
+                    url: "http://localhost:8080/user/del",
+                    // data: "action=jQueryAjax",
+                    _method: "DELETE",
+                })
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>哈哈哈哈哈欢迎！！！！！！！！！</h1><br/>
+
+    测试Rest风格：<br/>
+    <form action="/user" method="GET">
+        <input value="POST-GET" type="submit">
+    </form>
+    <form action="/user" method="POST">
+        <input value="POST-POST" type="submit">
+    </form>
+    <form action="/user/del" method="post">
+        <input name="_method" type="hidden" value="DELETE">
+        <button value="POST-DELETE" id="delete">DELETE</button>
+    </form>
+    <form action="/user" method="post">
+        <input name="_method" type="hidden" value="PUT">
+        <input value="POST-PUT" type="submit">
+    </form>
+
+
+
+</body>
+</html>
