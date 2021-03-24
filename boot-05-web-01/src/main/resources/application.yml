@@ -1,5 +1,13 @@
+server:
+  port: 8844
+
 spring:
 #  mvc:
 #    static-path-pattern: /res/**  #这个会导致 Favicon 功能失效
   resources:
     static-locations: [classpath:/haha/]
+    add-mappings: true  #禁用所有静态资源规则
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

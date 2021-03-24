@@ -28,13 +28,12 @@ public class HelloController {
         return "POST-张三";
     }
 
-
     @RequestMapping(value = "/user",method = RequestMethod.PUT)
     public String putUser(){
         return "PUT-张三";
     }
 
-    @RequestMapping(value = "/user/del",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user",method = RequestMethod.DELETE)
     public String deleteUser(){
         return "DELETE-张三";
     }
