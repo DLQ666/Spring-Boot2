@@ -1,6 +1,7 @@
 package com.dlq.admin.controller;
 
 import com.dlq.admin.bean.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
  *@author: Hasee
  *@create: 2021-03-30 14:38
  */
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -50,6 +52,7 @@ public class IndexController {
     @GetMapping("/main.html")
     public String mainPage(HttpSession httpSession,Model model) {
 
+        log.info("当前方式是：{}", "mainPage");
         //是否登陆，    采用拦截器  过滤器
         /*Object loginUser = httpSession.getAttribute("loginUser");
         if (loginUser != null){
