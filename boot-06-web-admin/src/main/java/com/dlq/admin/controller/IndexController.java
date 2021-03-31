@@ -51,13 +51,15 @@ public class IndexController {
     public String mainPage(HttpSession httpSession,Model model) {
 
         //是否登陆，    采用拦截器  过滤器
-        Object loginUser = httpSession.getAttribute("loginUser");
+        /*Object loginUser = httpSession.getAttribute("loginUser");
         if (loginUser != null){
             return "main";
         }else {
             model.addAttribute("msg", "请重新登录！！！");
             //回到登录页
             return "login";
-        }
+        }*/
+
+        return "main";
     }
 }
